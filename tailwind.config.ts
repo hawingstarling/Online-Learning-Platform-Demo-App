@@ -17,6 +17,10 @@ const config = {
         "2xl": "1400px",
       },
     },
+    colors: {
+      'primary-course-color': '#000000e5'
+    }, 
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
