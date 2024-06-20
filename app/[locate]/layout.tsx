@@ -1,8 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import "../globals.css";
+import { dir } from "i18next";
 
+
+const launguages = ['vi', 'en']
 const inter = Inter({ subsets: ["latin"] });
+
+export async function generateStaticParams() {
+  return launguages.map((locate) => ({ locate }))
+}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -11,11 +18,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  params: {
+    locate
+  }
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode,
+  params: {
+    locate: string
+  }
 }>) {
   return (
-    <html lang="en">
+    <html lang={locate} dir={dir(locate)}>
       <body className={inter.className}>{children}</body>
     </html>
   );
